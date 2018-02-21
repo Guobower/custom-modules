@@ -1,0 +1,528 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* valis_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-20 12:00+0000\n"
+"PO-Revision-Date: 2018-02-20 12:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: valis_project
+#: selection:project.project,project_periodicity:0
+msgid "As needed"
+msgstr "По мере необходимости"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "Average"
+msgstr "Среднее"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "Catastrophic"
+msgstr "Катастрофическое"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_budget_comment
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Comment"
+msgstr "Примечание"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_recommendation_result
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Conclusions/recommendations on the results of the project analysis"
+msgstr "Выводы/рекомендации по итогам анализа проекта"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_purchase
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Conducting Purchases"
+msgstr "Проведение закупок"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Consumption on the Project"
+msgstr "Расход на проект"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Customer"
+msgstr "Заказчик"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_customer_executor
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Customer Executor"
+msgstr "Исполнитель заказчика"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Degree of Risk Effect"
+msgstr "Степень влияния риска"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_execution
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Execution of the Contract"
+msgstr "Исполнение договора"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Executor"
+msgstr "Исполнитель"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Expert Analysis"
+msgstr "Экспертное заключение"
+
+#. module: valis_project
+#: selection:project.project,state:0
+msgid "Expert analysis"
+msgstr "Заключение"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_external_executor
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "External Executor"
+msgstr "Внешний исполнитель"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Frequency or Probability of Risk"
+msgstr "Частота или вероятность риска"
+
+#. module: valis_project
+#: selection:project.project,type:0
+msgid "HTML"
+msgstr "HTML"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "Hardly ever"
+msgstr "Очень редко"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_hello_world
+msgid "Hello World"
+msgstr "Hello World"
+
+#. module: valis_project
+#: selection:project.project,project_priority:0
+msgid "High"
+msgstr "Сложный"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Income from the Project"
+msgstr "Доход от проекта"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "Insignificant"
+msgstr "Незначительное"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_internal_executor
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Internal Executor"
+msgstr "Внутренний исполнитель"
+
+#. module: valis_project
+#: selection:project.project,project_type:0
+msgid "Investment model"
+msgstr "Инвестиционная модель"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_key_assumption
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Key Assumptions"
+msgstr "Ключевые предположение"
+
+#. module: valis_project
+#: selection:project.project,project_priority:0
+msgid "Low"
+msgstr "Легкий"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "Lower"
+msgstr "Низкое"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Main"
+msgstr "Главная"
+
+#. module: valis_project
+#: selection:project.project,project_periodicity:0
+msgid "Monthly"
+msgstr "Ежемесячно"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_external_name
+msgid "Name of External Project Participant"
+msgstr "Name of External Project Participant"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Name of external project participant"
+msgstr "Наименование внешнего участника проекта"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_area
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Name or Area of Risk"
+msgstr "Наименование или область риска"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "Occasionally"
+msgstr "Время от времени"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "Often"
+msgstr "Часто"
+
+#. module: valis_project
+#: selection:project.project,project_type:0
+msgid "Other"
+msgstr "Иное"
+
+#. module: valis_project
+#: selection:project.project,type:0
+msgid "PDF"
+msgstr "PDF"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Pecipient"
+msgstr "Получатели"
+
+#. module: valis_project
+#: selection:project.project,project_type_communication:0
+msgid "Periodic status meeting"
+msgstr "Периодическая статус встреча"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_periodicity
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Periodicity"
+msgstr "Периодичность"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_contract
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Preparation and Conclusion of the Contract"
+msgstr "Подготовка и заключение договора"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_priority
+msgid "Priority"
+msgstr "Приоритет"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Profit"
+msgstr "Прибыль"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_project_project
+msgid "Project"
+msgstr "Проект"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Administrator"
+msgstr "Администратор проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Budget"
+msgstr "Бюджет проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Charter"
+msgstr "Устав проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Constraints"
+msgstr "Ключевые ограничения"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_customer_curator
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor_curator
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Curator"
+msgstr "Куратор проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Description"
+msgstr "Описание проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Founder"
+msgstr "Инициатор проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Functional Objectives"
+msgstr "Функциональные цели"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_kpi
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project KPI"
+msgstr "KPI проекта"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor_manager
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Manager"
+msgstr "Руководитель проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Members"
+msgstr "Участники проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Name"
+msgstr "Название проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Number"
+msgstr "Номер проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Objectives"
+msgstr "Общие сведения о проекте"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_offer
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Offer"
+msgstr "Подготовка коммерческого предложения"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_ppi
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project PPI"
+msgstr "PPI Проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project PPI and KPI"
+msgstr "PPI и KPI проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Recommendations"
+msgstr "Рекомендации по проекту"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_relation
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Relations"
+msgstr "Взаимосвязь с другими проектами"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Request"
+msgstr "Заявка на проект"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Result"
+msgstr "Краткое описание результата проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Risk"
+msgstr "Риски проекта"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_customer_sponsor
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor_sponsor
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Sponsor"
+msgstr "Спонсор проекта"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Stakeholders"
+msgstr "Заинтересованные стороны"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Project Strategic Objectives"
+msgstr "Стратегическая цель"
+
+#. module: valis_project
+#: selection:project.project,state:0
+msgid "Project charter"
+msgstr "Устав"
+
+#. module: valis_project
+#: selection:project.project,project_type_communication:0
+msgid "Project completion report"
+msgstr "Отчет о завершении проекта"
+
+#. module: valis_project
+#: selection:project.project,state:0
+msgid "Project request"
+msgstr "Заявка"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_constraint
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Projects Constraints"
+msgstr "Ключевые ограничения"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Protocol Meeting"
+msgstr "Протокол совещания"
+
+#. module: valis_project
+#: selection:project.project,project_periodicity:0
+msgid "Quarterly"
+msgstr "Ежеквартально"
+
+#. module: valis_project
+#: selection:project.project,project_type_communication:0
+msgid "Quarterly status meeting"
+msgstr "Ежеквартальная статус встреча"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "Rarely"
+msgstr "Редко"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_recipient
+msgid "Recipient"
+msgstr "Получатель"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_recommendation_manager
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Recommendations for choosing a project manager"
+msgstr "Рекомендации по выбору проектного менеджера"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Regular Communications"
+msgstr "Регулярные коммуникации"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_strategy
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Risk Response Strategy"
+msgstr "Стратегия реагирования на риск"
+
+#. module: valis_project
+#: selection:project.project,project_external_name:0
+#: selection:project.project,project_periodicity:0
+#: selection:project.project,project_priority:0
+#: selection:project.project,project_risk_degree:0
+#: selection:project.project,project_risk_probability:0
+#: selection:project.project,project_thirdparty_organization:0
+#: selection:project.project,project_type:0
+#: selection:project.project,project_type_communication:0
+msgid "Select an item"
+msgstr "Выберите элемент"
+
+#. module: valis_project
+#: selection:project.project,project_type:0
+msgid "Service model"
+msgstr "Сервисная модель"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "Significant"
+msgstr "Существенное"
+
+#. module: valis_project
+#: selection:project.project,project_priority:0
+msgid "Standard"
+msgstr "Стандартный"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_state
+msgid "State"
+msgstr "Регион"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "The Need for Credit"
+msgstr "Потребность в кредитовании"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "The enlarged Project Plan"
+msgstr "Укрупненный план проекта"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_thirdparty_organization
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Third-party Organizations"
+msgstr "Сторонние организации"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_type
+msgid "Type"
+msgstr "Тип"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_degree
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_probability
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_type_communication
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Type of Communications"
+msgstr "Вид коммуникаций"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_project_type
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Type of Project"
+msgstr "Тип проекта"
+
+#. module: valis_project
+#: selection:project.project,project_periodicity:0
+msgid "Upon reaching the gate"
+msgstr "По достижению гейта"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "Very often"
+msgstr "Очень часто"
+
+#. module: valis_project
+#: selection:project.project,project_periodicity:0
+msgid "Weekly"
+msgstr "Еженедельно"
+
+#. module: valis_project
+#: selection:project.project,project_type_communication:0
+msgid "Weekly status meeting"
+msgstr "Еженедельная статус встреча"
+

@@ -1,0 +1,176 @@
+# -*- coding: utf-8 -*-
+
+from odoo import models, fields, api
+
+
+class ValisProject(models.Model):
+    _inherit = 'project.project'
+
+    hello_world = fields.Char(string='Hello World')
+
+    project_founder = fields.Many2one('res.users', string='Project Founder', default=lambda self: self.env.user,
+                                      track_visibility="onchange")
+    project_admin = fields.Many2one('res.users', string='Project Administrator', default=lambda self: self.env.user,
+                                    track_visibility="onchange")
+    project_type = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Investment model'),
+        ('2', 'Service model'),
+        ('3', 'Other'),
+    ], default='0', index=True, string="Type of Project", track_visibility="onchange")
+    project_priority = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Low'),
+        ('2', 'Standard'),
+        ('3', 'High'),
+    ], string='Priority', index=True, track_visibility="onchange")
+    project_relation = project_admin = fields.Many2one('project.project', string='Project Relations', default=lambda self: self.env.project,
+                                    track_visibility="onchange")
+
+    project_description = fields.Text(string='Project Description', track_visibility="onchange")
+
+    project_objective = fields.Text(string='Project Objectives', track_visibility="onchange")
+    project_strategic_objective = fields.Text(string='Project Strategic Objectives', track_visibility="onchange")
+    project_functional_objective = fields.Text(string='Project Functional Objectives', track_visibility="onchange")
+    project_result = fields.Text(string='Project Result', track_visibility="onchange")
+
+    # project_start = fields.Date(string="Project Start", index=True, track_visibility="onchange")
+    # project_end = fields.Date(string="Project End", index=True, track_visibility="onchange")
+
+    # project_offer = fields.Date(string="Project Offer", index=True, track_visibility="onchange")
+    # project_purchase = fields.Date(string="Conducting Purchases", index=True, track_visibility="onchange")
+    # project_contract = fields.Date(string="Preparation and Conclusion of the Contract", index=True,
+    #                                track_visibility="onchange")
+    # project_execution = fields.Date(string="Execution of the Contract", index=True, track_visibility="onchange")
+
+    key_assumption = fields.Text(string="Key Assumptions", track_visibility="onchange")
+    project_constraint = fields.Text(string="Projects Constraints", track_visibility="onchange")
+
+    project_thirdparty_organization = fields.Many2one('res.users', string='Third-party Organizations', default=lambda self: self.env.user,
+                                      track_visibility="onchange")
+    project_external_name = fields.Many2one('res.users', string='Name of External Project Participant', default=lambda self: self.env.user,
+                                      track_visibility="onchange")
+
+    project_income = fields.Float(string='Income from the Project', track_visibility="onchange")
+    project_consumption = fields.Float(string='Consumption on the Project', track_visibility="onchange")
+    project_credit = fields.Float(string='The Need for Credit', track_visibility="onchange")
+    project_profit = fields.Float(string='Profit', track_visibility="onchange")
+    project_budget_comment = fields.Text(string="Comment", track_visibility="onchange")
+
+    project_risk_area = fields.Text(string="Name or Area of Risk", track_visibility="onchange")
+    project_risk_probability = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Hardly ever'),
+        ('2', 'Rarely'),
+        ('3', 'Occasionally'),
+        ('4', 'Often'),
+        ('5', 'Very often'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_degree = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Insignificant'),
+        ('2', 'Lower'),
+        ('3', 'Average'),
+        ('4', 'Significant'),
+        ('5', 'Catastrophic'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_strategy = fields.Text(string="Risk Response Strategy", track_visibility="onchange")
+
+    project_ppi = fields.Text(string='Project PPI', track_visibility="onchange")
+    project_kpi = fields.Text(string='Project KPI', track_visibility="onchange")
+
+    project_type_communication = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Periodic status meeting'),
+        ('2', 'Weekly status meeting'),
+        ('3', 'Quarterly status meeting'),
+        ('4', 'Project completion report'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_periodicity = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Weekly'),
+        ('2', 'Monthly'),
+        ('3', 'Quarterly'),
+        ('4', 'Upon reaching the gate'),
+        ('5', 'As needed'),
+    ], default='0', index=True, string="Periodicity", track_visibility="onchange")
+    project_recipient = fields.Text(string='Recipient', track_visibility="onchange")
+
+    project_customer_sponsor = fields.Many2one('res.users', string='Project Sponsor',
+                                               default=lambda self: self.env.user,
+                                               track_visibility="onchange")
+    project_customer_curator = fields.Many2one('res.users', string='Project Curator',
+                                               default=lambda self: self.env.user,
+                                               track_visibility="onchange")
+    project_customer_executor = fields.Many2one('res.users', string='Customer Executor',
+                                                default=lambda self: self.env.user,
+                                                track_visibility="onchange")
+    project_executor = fields.Many2one('res.users', string='Executor',
+                                       default=lambda self: self.env.user,
+                                       track_visibility="onchange")
+    project_executor_sponsor = fields.Many2one('res.users', string='Project Sponsor',
+                                               default=lambda self: self.env.user,
+                                               track_visibility="onchange")
+    project_executor_curator = fields.Many2one('res.users', string='Project Curator',
+                                               default=lambda self: self.env.user,
+                                               track_visibility="onchange")
+    project_executor_manager = fields.Many2one('res.users', string='Project Manager',
+                                               default=lambda self: self.env.user,
+                                               track_visibility="onchange")
+    project_external_executor = fields.Many2one('res.users', string='External Executor',
+                                                default=lambda self: self.env.user,
+                                                track_visibility="onchange")
+    project_internal_executor = fields.Many2one('res.users', string='Internal Executor',
+                                                default=lambda self: self.env.user,
+                                                track_visibility="onchange")
+
+    project_recommendation_result = fields.Text(string="Conclusions/recommendations on the results of the project analysis", track_visibility="onchange")
+    project_recommendation_manager = fields.Text(string="Recommendations for choosing a project manager", track_visibility="onchange")
+
+    # Statusbar fields
+    state = fields.Selection([
+        ('project_request', 'Project request'),
+        ('expert_analysis', 'Expert analysis'),
+        ('project_charter', 'Project charter'),
+    ], default='project_request')
+
+    # This function is triggered when the user clicks on the button 'Go to Project Request'
+    @api.multi
+    def project_request_progressbar(self):
+        self.ensure_one()
+        self.write({
+            'state': 'project_request'
+        })
+
+    # This function is triggered when the user clicks on the button 'Go to Expert Analysis'
+    @api.multi
+    def expert_analysis_progressbar(self):
+        self.ensure_one()
+        self.write({
+            'state': 'expert_analysis'
+        })
+
+    # This function is triggered when the user clicks on the button 'Go to Project Charter'
+    @api.multi
+    def project_charter_progressbar(self):
+        self.ensure_one()
+        self.write({
+            'state': 'project_charter'
+        })
+
+    # PDF/HTML generate
+    type = fields.Selection([('qweb-pdf', "PDF"), ('qweb-html', "HTML"), ], default='qweb-pdf')
+
+    @api.one
+    def print_report(self):
+        vals = {}
+        return {
+            'type': 'ir.actions.report.xml',
+            'report_name': 'your_module.report_id',
+            'datas': {
+                'model': 'model',
+                'id': report_ids and report_ids[0] or False,
+                'ids': report_ids and report_ids or [],
+                'report_type': self.type},
+            'nodestroy': True
+        }

@@ -1,0 +1,203 @@
+<odoo>
+    <data>
+        <record id="edit_project" model="ir.ui.view">
+            <field name="name">valis.project</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <!--Rename page 'settings' to 'main'-->
+                <xpath expr="//page[@name='settings']" position="attributes">
+                    <attribute name="string">Main</attribute>
+                </xpath>
+                <!--Hide field privacy_visibility-->
+                <xpath expr="//field[@name='privacy_visibility']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <!--Hide field user_id when state != project_charter-->
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" string="Project Manager"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                </xpath>
+                <!--Hide field partner_id when state != project_charter-->
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id" string="Customer"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                </xpath>
+                <!--Statusbar-->
+                <header>
+                    <!--State buttons-->
+                    <button string="Project Request" type="object" name="project_request_progressbar"
+                            class="oe_highlight"
+                            attrs="{'visible': [('state','=','project_request')]}"/>
+                    <button string="Expert Analysis" type="object" name="expert_analysis_progressbar"
+                            class="oe_highlight"
+                            attrs="{'visible': [('state','=','expert_analysis')]}"/>
+                    <button string="Project Charter" type="object" name="project_charter_progressbar"
+                            class="oe_highlight"
+                            attrs="{'visible': [('state','=','project_charter')]}"/>
+                    <!--PDF button-->
+                    <!--<button name="print_report" string="Print" type="object" class="oe_highlight"/>-->
+                    <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
+                            attrs="{'invisible': [('state','!=','expert_analysis')]}"/>
+                    <!--This will create the statusbar-->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <!--Fields in settings(main)-->
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="name" string="Project Name"/>
+                    <field name="id" string="Project Number"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="project_founder" string="Project Founder"/>
+                    <field name="project_admin" string="Project Administrator"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                    <field name="project_type" string="Type of Project"/>
+                    <field name="project_priority" widget="priority"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                    <field name="project_relation" string="Project Relations"/>
+                    <field name="create_date" readonly="1"/>
+                </xpath>
+                <!--Main fields-->
+                <xpath expr="//field[@name='label_tasks']" position="after">
+                    <group>
+                        <field name="name" string="Project Name"/>
+                        <field name="id" string="Project Number"/>
+                        <field name="user_id" string="Project Manager"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="partner_id" string="Customer"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_founder" string="Project Founder"/>
+                        <field name="project_admin" string="Project Administrator"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_type" string="Type of Project"/>
+                        <field name="project_priority" widget="priority"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_relation" string="Project Relations"/>
+                        <field name="create_date" readonly="1"/>
+                    </group>
+                </xpath>
+                <!--Pages of the project-->
+                <xpath expr="//page[@name='settings']" position="after">
+                    <page name="page_project_objective" string="Project Objectives">
+                        <group>
+                            <field name="project_description" string="Project Description"/>
+                            <field name="project_strategic_objective" string="Project Strategic Objectives"/>
+                            <field name="project_functional_objective" string="Project Functional Objectives"/>
+                            <field name="project_objective" string="Project Objectives"/>
+                            <field name="project_result" string="Project Result"/>
+                        </group>
+                    </page>
+                    <!--<page name="page_project_enlarged" string="The enlarged Project Plan">-->
+                        <!--<group>-->
+                            <!--<field name="project_offer" string="Project Offer"/>-->
+                            <!--<field name="project_purchase" string="Conducting Purchases"/>-->
+                            <!--<field name="project_contract" string="Preparation and Conclusion of the Contract"/>-->
+                            <!--<field name="project_execution" string="Execution of the Contract"/>-->
+                        <!--</group>-->
+                    <!--</page>-->
+                    <page name="page_project_constraint" string="Project Constraints">
+                        <group>
+                            <field name="key_assumption" string="Key Assumptions"/>
+                            <field name="project_constraint" string="Projects Constraints"/>
+                        </group>
+                    </page>
+                    <page name="page_project_stakeholder" string="Project Stakeholders">
+                        <group>
+                            <field name="project_thirdparty_organization" string="Third-party Organizations"/>
+                            <field name="project_external_name" string="Name of external project participant"/>
+                        </group>
+                    </page>
+                    <page name="page_project_budget" string="Project Budget">
+                        <group>
+                            <field name="project_income" string="Income from the Project"
+                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                            <field name="project_consumption" string="Consumption on the Project"/>
+                            <field name="project_credit" string="The Need for Credit"
+                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                            <field name="project_profit" string="Profit"
+                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                            <field name="project_budget_comment" string="Comment"/>
+                        </group>
+                    </page>
+                    <page name="page_project_risk" string="Project Risk">
+                        <group>
+                            <table border="1" width="100%" height="200">
+                                <tr>
+                                    <th>Name or Area of Risk</th>
+                                    <th>Frequency or Probability of Risk</th>
+                                    <th>Degree of Risk Effect</th>
+                                    <th>Risk Response Strategy</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="project_risk_area" string="Name or Area of Risk"/>
+                                    </td>
+                                    <td>
+                                        <field name="project_risk_probability"
+                                               string="Frequency or Probability of Risk"/>
+                                    </td>
+                                    <td>
+                                        <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                                    </td>
+                                    <td>
+                                        <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </group>
+                    </page>
+                    <page name="page_project_ppi_kpi" string="Project PPI and KPI"
+                          attrs="{'invisible': [('state','!=','project_charter')]}">
+                        <group>
+                            <field name="project_ppi" string="Project PPI"/>
+                            <field name="project_kpi" string="Project KPI"/>
+                        </group>
+                    </page>
+                    <page name="page_regular_communication" string="Regular Communications"
+                          attrs="{'invisible': [('state','!=','project_charter')]}">
+                        <group>
+                            <field name="project_type_communication" string="Type of Communications"/>
+                            <field name="project_periodicity" string="Periodicity"/>
+                            <field name="project_recipient" string="Pecipient"/>
+                        </group>
+                    </page>
+                    <page name="page_project_member" string="Project Members"
+                          attrs="{'invisible': [('state','!=','project_charter')]}">
+                        <group>
+                            <group string="Customer">
+                                <field name="partner_id" string="Customer"/>
+                                <field name="project_customer_sponsor" string="Project Sponsor"/>
+                                <field name="project_customer_curator" string="Project Curator"/>
+                                <field name="user_id" string="Project Manager"/>
+                                <field name="project_customer_executor" string="Customer Executor"/>
+                            </group>
+                            <group string="Executor">
+                                <field name="project_executor" string="Executor"/>
+                                <field name="project_executor_sponsor" string="Project Sponsor"/>
+                                <field name="project_executor_curator" string="Project Curator"/>
+                                <field name="project_executor_manager" string="Project Manager"/>
+                                <field name="project_external_executor" string="External Executor"/>
+                                <field name="project_internal_executor" string="Internal Executor"/>
+                            </group>
+                        </group>
+                    </page>
+                    <!--Expert analysis recommendations-->
+                    <page name="page_project_recommendation" string="Project Recommendations"
+                          attrs="{'invisible': [('state','!=','expert_analysis')]}">
+                        <group>
+                            <field name="project_recommendation_result"
+                                   string="Conclusions/recommendations on the results of the project analysis"/>
+                            <field name="project_recommendation_manager"
+                                   string="Recommendations for choosing a project manager"/>
+                        </group>
+                    </page>
+                </xpath>
+                <!--Logs-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
