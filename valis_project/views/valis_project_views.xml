@@ -32,7 +32,7 @@
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                 </xpath>
 
-                <!--Statusbar-->
+                <!--Statusbar!-->
                 <header>
                     <!--State buttons-->
                     <button string="Project Request" type="object" name="project_request_progressbar"
