@@ -6,17 +6,18 @@ from odoo import models, fields, api
 class ValisProject(models.Model):
     _inherit = 'project.project'
 
+    # Field for test
     hello_world = fields.Char(string='Hello World')
 
+    # Main fields
     project_founder = fields.Many2one('res.users', string='Project Founder', default=lambda self: self.env.user,
                                       track_visibility="onchange")
     project_admin = fields.Many2one('res.users', string='Project Administrator', default=lambda self: self.env.user,
                                     track_visibility="onchange")
     project_type = fields.Selection([
-        ('0', 'Select an item'),
-        ('1', 'Investment model'),
-        ('2', 'Service model'),
-        ('3', 'Other'),
+        ('0', 'Investment model'),
+        ('1', 'Service model'),
+        ('2', 'Other'),
     ], default='0', index=True, string="Type of Project", track_visibility="onchange")
     project_priority = fields.Selection([
         ('0', 'Select an item'),
@@ -24,8 +25,7 @@ class ValisProject(models.Model):
         ('2', 'Standard'),
         ('3', 'High'),
     ], string='Priority', index=True, track_visibility="onchange")
-    project_relation = project_admin = fields.Many2one('project.project', string='Project Relations', default=lambda self: self.env.project,
-                                    track_visibility="onchange")
+    project_relation = fields.Many2one('project.project', string='Project Relations', track_visibility="onchange")
 
     project_description = fields.Text(string='Project Description', track_visibility="onchange")
 
@@ -34,22 +34,15 @@ class ValisProject(models.Model):
     project_functional_objective = fields.Text(string='Project Functional Objectives', track_visibility="onchange")
     project_result = fields.Text(string='Project Result', track_visibility="onchange")
 
-    # project_start = fields.Date(string="Project Start", index=True, track_visibility="onchange")
-    # project_end = fields.Date(string="Project End", index=True, track_visibility="onchange")
-
-    # project_offer = fields.Date(string="Project Offer", index=True, track_visibility="onchange")
-    # project_purchase = fields.Date(string="Conducting Purchases", index=True, track_visibility="onchange")
-    # project_contract = fields.Date(string="Preparation and Conclusion of the Contract", index=True,
-    #                                track_visibility="onchange")
-    # project_execution = fields.Date(string="Execution of the Contract", index=True, track_visibility="onchange")
-
     key_assumption = fields.Text(string="Key Assumptions", track_visibility="onchange")
     project_constraint = fields.Text(string="Projects Constraints", track_visibility="onchange")
 
-    project_thirdparty_organization = fields.Many2one('res.users', string='Third-party Organizations', default=lambda self: self.env.user,
-                                      track_visibility="onchange")
-    project_external_name = fields.Many2one('res.users', string='Name of External Project Participant', default=lambda self: self.env.user,
-                                      track_visibility="onchange")
+    project_thirdparty_organization = fields.Many2one('res.users', string='Third-party Organizations',
+                                                      default=lambda self: self.env.user,
+                                                      track_visibility="onchange")
+    project_external_name = fields.Many2one('res.users', string='Name of External Project Participant',
+                                            default=lambda self: self.env.user,
+                                            track_visibility="onchange")
 
     project_income = fields.Float(string='Income from the Project', track_visibility="onchange")
     project_consumption = fields.Float(string='Consumption on the Project', track_visibility="onchange")
@@ -123,9 +116,11 @@ class ValisProject(models.Model):
     project_internal_executor = fields.Many2one('res.users', string='Internal Executor',
                                                 default=lambda self: self.env.user,
                                                 track_visibility="onchange")
-
-    project_recommendation_result = fields.Text(string="Conclusions/recommendations on the results of the project analysis", track_visibility="onchange")
-    project_recommendation_manager = fields.Text(string="Recommendations for choosing a project manager", track_visibility="onchange")
+    # Expert analysis recommendations fields
+    project_recommendation_result = fields.Text(
+        string="Conclusions/recommendations on the results of the project analysis", track_visibility="onchange")
+    project_recommendation_manager = fields.Text(string="Recommendations for choosing a project manager",
+                                                 track_visibility="onchange")
 
     # Statusbar fields
     state = fields.Selection([
@@ -157,20 +152,3 @@ class ValisProject(models.Model):
         self.write({
             'state': 'project_charter'
         })
-
-    # PDF/HTML generate
-    type = fields.Selection([('qweb-pdf', "PDF"), ('qweb-html', "HTML"), ], default='qweb-pdf')
-
-    @api.one
-    def print_report(self):
-        vals = {}
-        return {
-            'type': 'ir.actions.report.xml',
-            'report_name': 'your_module.report_id',
-            'datas': {
-                'model': 'model',
-                'id': report_ids and report_ids[0] or False,
-                'ids': report_ids and report_ids or [],
-                'report_type': self.type},
-            'nodestroy': True
-        }
