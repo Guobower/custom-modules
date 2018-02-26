@@ -9,20 +9,29 @@
                 <xpath expr="//page[@name='settings']" position="attributes">
                     <attribute name="string">Main</attribute>
                 </xpath>
+
+                <!--Hide page 'emails'-->
+                <xpath expr="//page[@name='emails']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
                 <!--Hide field privacy_visibility-->
                 <xpath expr="//field[@name='privacy_visibility']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
+
                 <!--Hide field user_id when state != project_charter-->
                 <xpath expr="//field[@name='user_id']" position="replace">
                     <field name="user_id" string="Project Manager"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                 </xpath>
+
                 <!--Hide field partner_id when state != project_charter-->
                 <xpath expr="//field[@name='partner_id']" position="replace">
                     <field name="partner_id" string="Customer"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                 </xpath>
+
                 <!--Statusbar-->
                 <header>
                     <!--State buttons-->
@@ -35,10 +44,11 @@
                     <button string="Project Charter" type="object" name="project_charter_progressbar"
                             class="oe_highlight"
                             attrs="{'visible': [('state','=','project_charter')]}"/>
-                    <!--PDF button-->
-                    <!--<button name="print_report" string="Print" type="object" class="oe_highlight"/>-->
-                    <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
-                            attrs="{'invisible': [('state','!=','expert_analysis')]}"/>
+
+                    <!--Protocol meeting button-->
+                    <!-- <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
+                            attrs="{'invisible': [('state','!=','expert_analysis')]}"/> -->
+
                     <!--This will create the statusbar-->
                     <field name="state" widget="statusbar"/>
                 </header>
@@ -51,12 +61,13 @@
                     <field name="project_founder" string="Project Founder"/>
                     <field name="project_admin" string="Project Administrator"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                    <field name="project_type" string="Type of Project"/>
+                    <field name="project_type" string="Type of Project" widget="radio"/>
                     <field name="project_priority" widget="priority"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                     <field name="project_relation" string="Project Relations"/>
                     <field name="create_date" readonly="1"/>
                 </xpath>
+
                 <!--Main fields-->
                 <xpath expr="//field[@name='label_tasks']" position="after">
                     <group>
@@ -69,13 +80,15 @@
                         <field name="project_founder" string="Project Founder"/>
                         <field name="project_admin" string="Project Administrator"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                        <field name="project_type" string="Type of Project"/>
+                        <field name="project_type" string="Type of Project" widget="radio"/>
+                        <field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>
                         <field name="project_priority" widget="priority"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
                         <field name="project_relation" string="Project Relations"/>
                         <field name="create_date" readonly="1"/>
                     </group>
                 </xpath>
+
                 <!--Pages of the project-->
                 <xpath expr="//page[@name='settings']" position="after">
                     <page name="page_project_objective" string="Project Objectives">
@@ -87,14 +100,6 @@
                             <field name="project_result" string="Project Result"/>
                         </group>
                     </page>
-                    <!--<page name="page_project_enlarged" string="The enlarged Project Plan">-->
-                        <!--<group>-->
-                            <!--<field name="project_offer" string="Project Offer"/>-->
-                            <!--<field name="project_purchase" string="Conducting Purchases"/>-->
-                            <!--<field name="project_contract" string="Preparation and Conclusion of the Contract"/>-->
-                            <!--<field name="project_execution" string="Execution of the Contract"/>-->
-                        <!--</group>-->
-                    <!--</page>-->
                     <page name="page_project_constraint" string="Project Constraints">
                         <group>
                             <field name="key_assumption" string="Key Assumptions"/>
@@ -156,9 +161,24 @@
                     <page name="page_regular_communication" string="Regular Communications"
                           attrs="{'invisible': [('state','!=','project_charter')]}">
                         <group>
-                            <field name="project_type_communication" string="Type of Communications"/>
-                            <field name="project_periodicity" string="Periodicity"/>
-                            <field name="project_recipient" string="Pecipient"/>
+                            <table border="1" width="100%" height="200">
+                                <tr>
+                                    <th>Type of Communications</th>
+                                    <th>Periodicity</th>
+                                    <th>Pecipient</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <field name="project_type_communication" string="Type of Communications"/>
+                                    </td>
+                                    <td>
+                                        <field name="project_periodicity" string="Periodicity"/>
+                                    </td>
+                                    <td>
+                                        <field name="project_recipient" string="Pecipient"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </group>
                     </page>
                     <page name="page_project_member" string="Project Members"
@@ -181,6 +201,16 @@
                             </group>
                         </group>
                     </page>
+
+                    <!--Test Risks Page-->
+                    <page string="TEST RISKS PAGE">
+                        <tree string="Operations" editable="bottom">
+                            <field name="name"/>
+                            <field name="project_founder"/>
+                            <field name='project_admin'/>
+                        </tree>
+                    </page>
+
                     <!--Expert analysis recommendations-->
                     <page name="page_project_recommendation" string="Project Recommendations"
                           attrs="{'invisible': [('state','!=','expert_analysis')]}">
@@ -192,6 +222,7 @@
                         </group>
                     </page>
                 </xpath>
+
                 <!--Logs-->
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>

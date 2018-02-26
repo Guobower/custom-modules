@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 12:00+0000\n"
-"PO-Revision-Date: 2018-02-20 12:00+0000\n"
+"POT-Creation-Date: 2018-02-22 07:52+0000\n"
+"PO-Revision-Date: 2018-02-22 07:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,19 +16,65 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: valis_project
+#: selection:project.project,project_risk_degree:0
+#: selection:project.project,project_risk_probability:0
+msgid "0. Select an item"
+msgstr "0. Выберите элемент"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "1. Hardly ever"
+msgstr "1. Очень редко"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "1. Insignificant"
+msgstr "1. Незначительное"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "2. Lower"
+msgstr "2. Низкое"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "2. Rarely"
+msgstr "2. Редко"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "3. Average"
+msgstr "3. Среднее"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "3. Occasionally"
+msgstr "3. Время от времени"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "4. Often"
+msgstr "4. Часто"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "4. Significant"
+msgstr "4. Существенное"
+
+#. module: valis_project
+#: selection:project.project,project_risk_degree:0
+msgid "5. Catastrophic"
+msgstr "5. Катастрофическое"
+
+#. module: valis_project
+#: selection:project.project,project_risk_probability:0
+msgid "5. Very often"
+msgstr "5. Очень часто"
+
+#. module: valis_project
 #: selection:project.project,project_periodicity:0
 msgid "As needed"
 msgstr "По мере необходимости"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "Average"
-msgstr "Среднее"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "Catastrophic"
-msgstr "Катастрофическое"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_budget_comment
@@ -41,12 +87,6 @@ msgstr "Примечание"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Conclusions/recommendations on the results of the project analysis"
 msgstr "Выводы/рекомендации по итогам анализа проекта"
-
-#. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_purchase
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "Conducting Purchases"
-msgstr "Проведение закупок"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -68,12 +108,6 @@ msgstr "Исполнитель заказчика"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Degree of Risk Effect"
 msgstr "Степень влияния риска"
-
-#. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_execution
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "Execution of the Contract"
-msgstr "Исполнение договора"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor
@@ -108,11 +142,6 @@ msgid "HTML"
 msgstr "HTML"
 
 #. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "Hardly ever"
-msgstr "Очень редко"
-
-#. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_hello_world
 msgid "Hello World"
 msgstr "Hello World"
@@ -126,11 +155,6 @@ msgstr "Сложный"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Income from the Project"
 msgstr "Доход от проекта"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "Insignificant"
-msgstr "Незначительное"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_internal_executor
@@ -153,11 +177,6 @@ msgstr "Ключевые предположение"
 #: selection:project.project,project_priority:0
 msgid "Low"
 msgstr "Легкий"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "Lower"
-msgstr "Низкое"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -186,16 +205,6 @@ msgid "Name or Area of Risk"
 msgstr "Наименование или область риска"
 
 #. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "Occasionally"
-msgstr "Время от времени"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "Often"
-msgstr "Часто"
-
-#. module: valis_project
 #: selection:project.project,project_type:0
 msgid "Other"
 msgstr "Иное"
@@ -220,12 +229,6 @@ msgstr "Периодическая статус встреча"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Periodicity"
 msgstr "Периодичность"
-
-#. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_contract
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "Preparation and Conclusion of the Contract"
-msgstr "Подготовка и заключение договора"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_priority
@@ -317,12 +320,6 @@ msgid "Project Objectives"
 msgstr "Общие сведения о проекте"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_offer
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "Project Offer"
-msgstr "Подготовка коммерческого предложения"
-
-#. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_ppi
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Project PPI"
@@ -398,11 +395,6 @@ msgid "Projects Constraints"
 msgstr "Ключевые ограничения"
 
 #. module: valis_project
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "Protocol Meeting"
-msgstr "Протокол совещания"
-
-#. module: valis_project
 #: selection:project.project,project_periodicity:0
 msgid "Quarterly"
 msgstr "Ежеквартально"
@@ -411,11 +403,6 @@ msgstr "Ежеквартально"
 #: selection:project.project,project_type_communication:0
 msgid "Quarterly status meeting"
 msgstr "Ежеквартальная статус встреча"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "Rarely"
-msgstr "Редко"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_recipient
@@ -440,12 +427,8 @@ msgid "Risk Response Strategy"
 msgstr "Стратегия реагирования на риск"
 
 #. module: valis_project
-#: selection:project.project,project_external_name:0
 #: selection:project.project,project_periodicity:0
 #: selection:project.project,project_priority:0
-#: selection:project.project,project_risk_degree:0
-#: selection:project.project,project_risk_probability:0
-#: selection:project.project,project_thirdparty_organization:0
 #: selection:project.project,project_type:0
 #: selection:project.project,project_type_communication:0
 msgid "Select an item"
@@ -455,11 +438,6 @@ msgstr "Выберите элемент"
 #: selection:project.project,project_type:0
 msgid "Service model"
 msgstr "Сервисная модель"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "Significant"
-msgstr "Существенное"
 
 #. module: valis_project
 #: selection:project.project,project_priority:0
@@ -475,11 +453,6 @@ msgstr "Регион"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "The Need for Credit"
 msgstr "Потребность в кредитовании"
-
-#. module: valis_project
-#: model:ir.ui.view,arch_db:valis_project.edit_project
-msgid "The enlarged Project Plan"
-msgstr "Укрупненный план проекта"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_thirdparty_organization
@@ -510,11 +483,6 @@ msgstr "Тип проекта"
 #: selection:project.project,project_periodicity:0
 msgid "Upon reaching the gate"
 msgstr "По достижению гейта"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "Very often"
-msgstr "Очень часто"
 
 #. module: valis_project
 #: selection:project.project,project_periodicity:0
