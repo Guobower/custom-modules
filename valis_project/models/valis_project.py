@@ -2,12 +2,15 @@
 
 from odoo import models, fields, api
 
-
 class ValisProject(models.Model):
     _inherit = 'project.project'
 
-    # Field for test
+    # Fields, methods for test
     hello_world = fields.Char(string='Hello World')
+
+    # Regular Communications field
+    regular_communication = fields.One2many('valis.communication', 'communication_list', 'Communication List', readonly=False,
+                                    copy=True, states={'draft': [('readonly', False)]})
 
     # Main fields
     project_founder = fields.Many2one('res.users', string='Project Founder', default=lambda self: self.env.user,
@@ -50,44 +53,8 @@ class ValisProject(models.Model):
     project_profit = fields.Float(string='Profit', track_visibility="onchange")
     project_budget_comment = fields.Text(string="Comment", track_visibility="onchange")
 
-    project_risk_area = fields.Text(string="Name or Area of Risk", track_visibility="onchange")
-    project_risk_probability = fields.Selection([
-        ('0', 'Select an item'),
-        ('1', 'Hardly ever'),
-        ('2', 'Rarely'),
-        ('3', 'Occasionally'),
-        ('4', 'Often'),
-        ('5', 'Very often'),
-    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
-    project_risk_degree = fields.Selection([
-        ('0', 'Select an item'),
-        ('1', 'Insignificant'),
-        ('2', 'Lower'),
-        ('3', 'Average'),
-        ('4', 'Significant'),
-        ('5', 'Catastrophic'),
-    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
-    project_risk_strategy = fields.Text(string="Risk Response Strategy", track_visibility="onchange")
-
     project_ppi = fields.Text(string='Project PPI', track_visibility="onchange")
     project_kpi = fields.Text(string='Project KPI', track_visibility="onchange")
-
-    project_type_communication = fields.Selection([
-        ('0', 'Select an item'),
-        ('1', 'Periodic status meeting'),
-        ('2', 'Weekly status meeting'),
-        ('3', 'Quarterly status meeting'),
-        ('4', 'Project completion report'),
-    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
-    project_periodicity = fields.Selection([
-        ('0', 'Select an item'),
-        ('1', 'Weekly'),
-        ('2', 'Monthly'),
-        ('3', 'Quarterly'),
-        ('4', 'Upon reaching the gate'),
-        ('5', 'As needed'),
-    ], default='0', index=True, string="Periodicity", track_visibility="onchange")
-    project_recipient = fields.Text(string='Recipient', track_visibility="onchange")
 
     project_customer_sponsor = fields.Many2one('res.users', string='Project Sponsor',
                                                default=lambda self: self.env.user,
@@ -152,3 +119,25 @@ class ValisProject(models.Model):
         self.write({
             'state': 'project_charter'
         })
+
+class ValisCommunication(models.Model):
+    _name = 'valis.communication'
+    communication_list = fields.Many2one('valis.project', 'Regular Communications', index=True, ondelete='cascade',
+                                         required=True)
+    project_type_communication = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Periodic status meeting'),
+        ('2', 'Weekly status meeting'),
+        ('3', 'Quarterly status meeting'),
+        ('4', 'Project completion report'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_periodicity = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Weekly'),
+        ('2', 'Monthly'),
+        ('3', 'Quarterly'),
+        ('4', 'Upon reaching the gate'),
+        ('5', 'As needed'),
+    ], default='0', index=True, string="Periodicity", track_visibility="onchange")
+    project_recipient = fields.Text(string='Recipient', track_visibility="onchange")
+
