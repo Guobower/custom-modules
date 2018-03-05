@@ -90,7 +90,7 @@
                         <field name="project_admin" string="Project Administrator"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
                         <field name="project_type" string="Type of Project" widget="radio"/>
-                        <field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>
+                        <!--<field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>-->
                         <field name="project_priority" widget="priority"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
                         <field name="project_relation" string="Project Relations"/>
@@ -131,6 +131,43 @@
                             <field name="project_profit" string="Profit"
                                    attrs="{'invisible': [('state','!=','project_charter')]}"/>
                             <field name="project_budget_comment" string="Comment"/>
+                        </group>
+                    </page>
+
+                    <!--Test Risks Page-->
+                    <page name="page_project_risk" string="Project Risk">
+                        <group string="External Risks"/>
+                        <field name="risk_external">
+                            <tree string="External Risks" editable="bottom">
+                                <field name="project_risk_area" string="Name or Area of Risk"/>
+                                <field name="project_risk_cause" string="Cause of Risk"/>
+                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                                <field name="project_risk_consequence" string="Consequences of Risk"/>
+                                <field name="project_risk_recommendation"
+                                       string="Recommendations for Actions to avoid/minimize risks"/>
+                            </tree>
+                        </field>
+                        <group string="Internal Risks"/>
+                        <field name="risk_internal">
+                            <tree string="Internal Risks" editable="bottom">
+                                <field name="project_risk_area" string="Name or Area of Risk"/>
+                                <field name="project_risk_cause" string="Cause of Risk"/>
+                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                                <field name="project_risk_consequence" string="Consequences of Risk"/>
+                                <field name="project_risk_recommendation"
+                                       string="Recommendations for Actions to avoid/minimize risks"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="page_project_ppi_kpi" string="Project PPI and KPI"
+                          attrs="{'invisible': [('state','!=','project_charter')]}">
+                        <group>
+                            <field name="project_ppi" string="Project PPI"/>
+                            <field name="project_kpi" string="Project KPI"/>
                         </group>
                     </page>
 

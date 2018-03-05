@@ -2,15 +2,53 @@
 
 from odoo import models, fields, api
 
+
 class ValisProject(models.Model):
     _inherit = 'project.project'
 
     # Fields, methods for test
     hello_world = fields.Char(string='Hello World')
 
-    # Regular Communications field
-    regular_communication = fields.One2many('valis.communication', 'communication_list', 'Communication List', readonly=False,
+    # Risks smart button
+    @api.multi
+    def _project_risk_button(self):
+        pass
+
+    def attachment_tree_view(self):
+        self.ensure_one()
+        domain = [
+            '|',
+            '&', ('res_model', '=', 'project.project'), ('res_id', 'in', self.ids),
+            '&', ('res_model', '=', 'project.task'), ('res_id', 'in', self.task_ids.ids)]
+        return {
+            'name': _('Attachments'),
+            'domain': domain,
+            'res_model': 'ir.attachment',
+            'type': 'ir.actions.act_window',
+            'view_id': False,
+            'view_mode': 'kanban,tree,form',
+            'view_type': 'form',
+            'help': _('''<p class="oe_view_nocontent_create">
+                            Documents are attached to the tasks and issues of your project.</p><p>
+                            Send messages or log internal notes with attachments to link
+                            documents to your project.
+                        </p>'''),
+            'limit': 80,
+            'context': "{'default_res_model': '%s','default_res_id': %d}" % (self._name, self.id)
+        }
+
+    # Risks field
+    # risk_all = fields.Many2many('valis.risk.internal', 'valis.risk', 'risk_list' 'risk_list_internal', 'Risk All', readonly=False, copy=True)
+    risk_count = fields.Integer(compute='_project_risk_button', string="Risks")
+    risk_internal = fields.One2many('valis.risk.internal', 'risk_list_internal', 'Risk List Internal', readonly=False,
                                     copy=True, states={'draft': [('readonly', False)]})
+    risk_external = fields.One2many('valis.risk.external', 'risk_list_external', 'Risk List External', readonly=False,
+                                    copy=True, states={'draft': [('readonly', False)]})
+
+    # Regular Communications field
+    regular_communication = fields.One2many('valis.communication', 'communication_list', 'Communication List',
+                                            readonly=False,
+                                            copy=True, states={'draft': [('readonly', False)]})
 
     # Main fields
     project_founder = fields.Many2one('res.users', string='Project Founder', default=lambda self: self.env.user,
@@ -120,6 +158,7 @@ class ValisProject(models.Model):
             'state': 'project_charter'
         })
 
+
 class ValisCommunication(models.Model):
     _name = 'valis.communication'
     communication_list = fields.Many2one('valis.project', 'Regular Communications', index=True, ondelete='cascade',
@@ -141,3 +180,58 @@ class ValisCommunication(models.Model):
     ], default='0', index=True, string="Periodicity", track_visibility="onchange")
     project_recipient = fields.Text(string='Recipient', track_visibility="onchange")
 
+
+class ValisRiskInternal(models.Model):
+    _name = 'valis.risk.internal'
+    risk_list_internal = fields.Many2one('valis.project', 'Internal Risk', index=True, ondelete='cascade',
+                                         required=True)
+    project_risk_area = fields.Text(string="Name or Area of Risk", track_visibility="onchange")
+    project_risk_probability = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Hardly ever'),
+        ('2', 'Rarely'),
+        ('3', 'Occasionally'),
+        ('4', 'Often'),
+        ('5', 'Very often'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_degree = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Insignificant'),
+        ('2', 'Lower'),
+        ('3', 'Average'),
+        ('4', 'Significant'),
+        ('5', 'Catastrophic'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_cause = fields.Text(string="Cause of Risk", track_visibility="onchange")
+    project_risk_strategy = fields.Text(string="Risk Response Strategy", track_visibility="onchange")
+    project_risk_consequence = fields.Text(string='Consequences of Risk', track_visibility="onchange")
+    project_risk_recommendation = fields.Text(string='Recommendations for Actions to avoid/minimize risks',
+                                              track_visibility="onchange")
+
+
+class ValisRiskExternal(models.Model):
+    _name = 'valis.risk.external'
+    risk_list_external = fields.Many2one('valis.project', 'External Risk', index=True, ondelete='cascade',
+                                         required=True)
+    project_risk_area = fields.Text(string="Name or Area of Risk", track_visibility="onchange")
+    project_risk_probability = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Hardly ever'),
+        ('2', 'Rarely'),
+        ('3', 'Occasionally'),
+        ('4', 'Often'),
+        ('5', 'Very often'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_degree = fields.Selection([
+        ('0', 'Select an item'),
+        ('1', 'Insignificant'),
+        ('2', 'Lower'),
+        ('3', 'Average'),
+        ('4', 'Significant'),
+        ('5', 'Catastrophic'),
+    ], default='0', index=True, string="Type of Communications", track_visibility="onchange")
+    project_risk_cause = fields.Text(string="Cause of Risk", track_visibility="onchange")
+    project_risk_strategy = fields.Text(string="Risk Response Strategy", track_visibility="onchange")
+    project_risk_consequence = fields.Text(string='Consequences of Risk', track_visibility="onchange")
+    project_risk_recommendation = fields.Text(string='Recommendations for Actions to avoid/minimize risks',
+                                              track_visibility="onchange")
