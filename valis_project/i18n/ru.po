@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 07:52+0000\n"
-"PO-Revision-Date: 2018-02-22 07:52+0000\n"
+"POT-Creation-Date: 2018-03-05 12:37+0000\n"
+"PO-Revision-Date: 2018-03-05 12:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,71 +16,39 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: valis_project
-#: selection:project.project,project_risk_degree:0
-#: selection:project.project,project_risk_probability:0
-msgid "0. Select an item"
-msgstr "0. Выберите элемент"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "1. Hardly ever"
-msgstr "1. Очень редко"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "1. Insignificant"
-msgstr "1. Незначительное"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "2. Lower"
-msgstr "2. Низкое"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "2. Rarely"
-msgstr "2. Редко"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "3. Average"
-msgstr "3. Среднее"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "3. Occasionally"
-msgstr "3. Время от времени"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "4. Often"
-msgstr "4. Часто"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "4. Significant"
-msgstr "4. Существенное"
-
-#. module: valis_project
-#: selection:project.project,project_risk_degree:0
-msgid "5. Catastrophic"
-msgstr "5. Катастрофическое"
-
-#. module: valis_project
-#: selection:project.project,project_risk_probability:0
-msgid "5. Very often"
-msgstr "5. Очень часто"
-
-#. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: selection:valis.communication,project_periodicity:0
 msgid "As needed"
 msgstr "По мере необходимости"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_degree:0
+msgid "Average"
+msgstr "Среднее"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_degree:0
+msgid "Catastrophic"
+msgstr "Катастрофическое"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_cause
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_cause
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Cause of Risk"
+msgstr "Причины возникновения"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_budget_comment
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Comment"
-msgstr "Примечание"
+msgstr "Комментарий"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_regular_communication
+msgid "Communication List"
+msgstr "Communication List"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_recommendation_result
@@ -89,9 +57,30 @@ msgid "Conclusions/recommendations on the results of the project analysis"
 msgstr "Выводы/рекомендации по итогам анализа проекта"
 
 #. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_consequence
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_consequence
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Consequences of Risk"
+msgstr "Последствия риска"
+
+#. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Consumption on the Project"
 msgstr "Расход на проект"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_create_uid
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_create_uid
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_create_date
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_create_date
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_create_date
+msgid "Created on"
+msgstr "Создан"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -108,6 +97,13 @@ msgstr "Исполнитель заказчика"
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Degree of Risk Effect"
 msgstr "Степень влияния риска"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_display_name
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_display_name
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_executor
@@ -132,14 +128,25 @@ msgid "External Executor"
 msgstr "Внешний исполнитель"
 
 #. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_risk_list_external
+msgid "External Risk"
+msgstr "Внешние риски"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "External Risks"
+msgstr "Внешние риски"
+
+#. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Frequency or Probability of Risk"
 msgstr "Частота или вероятность риска"
 
 #. module: valis_project
-#: selection:project.project,type:0
-msgid "HTML"
-msgstr "HTML"
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_probability:0
+msgid "Hardly ever"
+msgstr "Очень редко"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_hello_world
@@ -152,15 +159,38 @@ msgid "High"
 msgstr "Сложный"
 
 #. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_id
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_id
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_id
+msgid "ID"
+msgstr "Номер"
+
+#. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Income from the Project"
 msgstr "Доход от проекта"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_degree:0
+msgid "Insignificant"
+msgstr "Незначительное"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_internal_executor
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Internal Executor"
 msgstr "Внутренний исполнитель"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_risk_list_internal
+msgid "Internal Risk"
+msgstr "Внутренние риски"
+
+#. module: valis_project
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Internal Risks"
+msgstr "Внутренние риски"
 
 #. module: valis_project
 #: selection:project.project,project_type:0
@@ -174,9 +204,36 @@ msgid "Key Assumptions"
 msgstr "Ключевые предположение"
 
 #. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication___last_update
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external___last_update
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal___last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_write_uid
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_write_uid
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_write_date
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_write_date
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: valis_project
 #: selection:project.project,project_priority:0
 msgid "Low"
 msgstr "Легкий"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_degree:0
+msgid "Lower"
+msgstr "Низкое"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -184,14 +241,14 @@ msgid "Main"
 msgstr "Главная"
 
 #. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: selection:valis.communication,project_periodicity:0
 msgid "Monthly"
 msgstr "Ежемесячно"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_external_name
 msgid "Name of External Project Participant"
-msgstr "Name of External Project Participant"
+msgstr "Наименование внешнего участника проекта"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -199,10 +256,23 @@ msgid "Name of external project participant"
 msgstr "Наименование внешнего участника проекта"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_area
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_area
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_area
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Name or Area of Risk"
 msgstr "Наименование или область риска"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_probability:0
+msgid "Occasionally"
+msgstr "Время от времени"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_probability:0
+msgid "Often"
+msgstr "Часто"
 
 #. module: valis_project
 #: selection:project.project,project_type:0
@@ -210,22 +280,17 @@ msgid "Other"
 msgstr "Иное"
 
 #. module: valis_project
-#: selection:project.project,type:0
-msgid "PDF"
-msgstr "PDF"
-
-#. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Pecipient"
 msgstr "Получатели"
 
 #. module: valis_project
-#: selection:project.project,project_type_communication:0
+#: selection:valis.communication,project_type_communication:0
 msgid "Periodic status meeting"
 msgstr "Периодическая статус встреча"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_periodicity
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_project_periodicity
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Periodicity"
 msgstr "Периодичность"
@@ -258,7 +323,7 @@ msgstr "Бюджет проекта"
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Project Charter"
-msgstr "Устав проекта"
+msgstr "Устав"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -307,7 +372,7 @@ msgstr "Участники проекта"
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Project Name"
-msgstr "Название проекта"
+msgstr "Наименование проекта"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -317,7 +382,7 @@ msgstr "Номер проекта"
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Project Objectives"
-msgstr "Общие сведения о проекте"
+msgstr "Задачи проекта"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_ppi
@@ -344,7 +409,7 @@ msgstr "Взаимосвязь с другими проектами"
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Project Request"
-msgstr "Заявка на проект"
+msgstr "Заявка"
 
 #. module: valis_project
 #: model:ir.ui.view,arch_db:valis_project.edit_project
@@ -379,7 +444,7 @@ msgid "Project charter"
 msgstr "Устав"
 
 #. module: valis_project
-#: selection:project.project,project_type_communication:0
+#: selection:valis.communication,project_type_communication:0
 msgid "Project completion report"
 msgstr "Отчет о завершении проекта"
 
@@ -395,19 +460,32 @@ msgid "Projects Constraints"
 msgstr "Ключевые ограничения"
 
 #. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: selection:valis.communication,project_periodicity:0
 msgid "Quarterly"
 msgstr "Ежеквартально"
 
 #. module: valis_project
-#: selection:project.project,project_type_communication:0
+#: selection:valis.communication,project_type_communication:0
 msgid "Quarterly status meeting"
 msgstr "Ежеквартальная статус встреча"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_recipient
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_probability:0
+msgid "Rarely"
+msgstr "Редко"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_project_recipient
 msgid "Recipient"
 msgstr "Получатель"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_recommendation
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_recommendation
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Recommendations for Actions to avoid/minimize risks"
+msgstr "Предложения по мероприятиям для ликвидации/минимизации риска"
 
 #. module: valis_project
 #: model:ir.model.fields,field_description:valis_project.field_project_project_project_recommendation_manager
@@ -416,21 +494,43 @@ msgid "Recommendations for choosing a project manager"
 msgstr "Рекомендации по выбору проектного менеджера"
 
 #. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_communication_list
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Regular Communications"
 msgstr "Регулярные коммуникации"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_strategy
+#: model:ir.model.fields,field_description:valis_project.field_project_project_risk_external
+msgid "Risk List External"
+msgstr "Risk List External"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_project_project_risk_internal
+msgid "Risk List Internal"
+msgstr "Risk List Internal"
+
+#. module: valis_project
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_strategy
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_strategy
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Risk Response Strategy"
 msgstr "Стратегия реагирования на риск"
 
 #. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: model:ir.model.fields,field_description:valis_project.field_project_project_risk_count
+#: model:ir.ui.menu,name:valis_project.menu_project_risk
+#: model:ir.ui.view,arch_db:valis_project.edit_project
+msgid "Risks"
+msgstr "Риски"
+
+#. module: valis_project
 #: selection:project.project,project_priority:0
-#: selection:project.project,project_type:0
-#: selection:project.project,project_type_communication:0
+#: selection:valis.communication,project_periodicity:0
+#: selection:valis.communication,project_type_communication:0
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_probability:0
 msgid "Select an item"
 msgstr "Выберите элемент"
 
@@ -438,6 +538,12 @@ msgstr "Выберите элемент"
 #: selection:project.project,project_type:0
 msgid "Service model"
 msgstr "Сервисная модель"
+
+#. module: valis_project
+#: selection:valis.risk.external,project_risk_degree:0
+#: selection:valis.risk.internal,project_risk_degree:0
+msgid "Significant"
+msgstr "Существенное"
 
 #. module: valis_project
 #: selection:project.project,project_priority:0
@@ -461,14 +567,11 @@ msgid "Third-party Organizations"
 msgstr "Сторонние организации"
 
 #. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_type
-msgid "Type"
-msgstr "Тип"
-
-#. module: valis_project
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_degree
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_risk_probability
-#: model:ir.model.fields,field_description:valis_project.field_project_project_project_type_communication
+#: model:ir.model.fields,field_description:valis_project.field_valis_communication_project_type_communication
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_degree
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_external_project_risk_probability
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_degree
+#: model:ir.model.fields,field_description:valis_project.field_valis_risk_internal_project_risk_probability
 #: model:ir.ui.view,arch_db:valis_project.edit_project
 msgid "Type of Communications"
 msgstr "Вид коммуникаций"
@@ -480,17 +583,48 @@ msgid "Type of Project"
 msgstr "Тип проекта"
 
 #. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: selection:valis.communication,project_periodicity:0
 msgid "Upon reaching the gate"
 msgstr "По достижению гейта"
 
 #. module: valis_project
-#: selection:project.project,project_periodicity:0
+#: selection:valis.risk.external,project_risk_probability:0
+#: selection:valis.risk.internal,project_risk_probability:0
+msgid "Very often"
+msgstr "Очень часто"
+
+#. module: valis_project
+#: selection:valis.communication,project_periodicity:0
 msgid "Weekly"
 msgstr "Еженедельно"
 
 #. module: valis_project
-#: selection:project.project,project_type_communication:0
+#: selection:valis.communication,project_type_communication:0
 msgid "Weekly status meeting"
 msgstr "Еженедельная статус встреча"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_valis_communication
+msgid "valis.communication"
+msgstr "valis.communication"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_valis_project
+msgid "valis.project"
+msgstr "valis.project"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_valis_risk
+msgid "valis.risk"
+msgstr "valis.risk"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_valis_risk_external
+msgid "valis.risk.external"
+msgstr "valis.risk.external"
+
+#. module: valis_project
+#: model:ir.model,name:valis_project.model_valis_risk_internal
+msgid "valis.risk.internal"
+msgstr "valis.risk.internal"
 

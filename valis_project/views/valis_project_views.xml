@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <menuitem id="menu_project_risk" name="Risks" sequence="100"/>
         <record id="edit_project" model="ir.ui.view">
             <field name="name">valis.project</field>
             <field name="model">project.project</field>
@@ -52,6 +53,14 @@
                     <!--This will create the statusbar-->
                     <field name="state" widget="statusbar"/>
                 </header>
+
+                <!--Action Risk Button-->
+                <xpath expr="//button[@name='toggle_active']" position="after">
+                    <button class="oe_stat_button" name="project_risk_button" type="object" icon="fa-exclamation">
+                        <field string="Risks" name="risk_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+
                 <!--Fields in settings(main)-->
                 <xpath expr="//field[@name='user_id']" position="before">
                     <field name="name" string="Project Name"/>
@@ -81,7 +90,7 @@
                         <field name="project_admin" string="Project Administrator"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
                         <field name="project_type" string="Type of Project" widget="radio"/>
-                        <field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>
+                        <!--<field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>-->
                         <field name="project_priority" widget="priority"
                                attrs="{'invisible': [('state','!=','project_charter')]}"/>
                         <field name="project_relation" string="Project Relations"/>
@@ -124,32 +133,35 @@
                             <field name="project_budget_comment" string="Comment"/>
                         </group>
                     </page>
+
+                    <!--Test Risks Page-->
                     <page name="page_project_risk" string="Project Risk">
-                        <group>
-                            <table border="1" width="100%" height="200">
-                                <tr>
-                                    <th>Name or Area of Risk</th>
-                                    <th>Frequency or Probability of Risk</th>
-                                    <th>Degree of Risk Effect</th>
-                                    <th>Risk Response Strategy</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <field name="project_risk_area" string="Name or Area of Risk"/>
-                                    </td>
-                                    <td>
-                                        <field name="project_risk_probability"
-                                               string="Frequency or Probability of Risk"/>
-                                    </td>
-                                    <td>
-                                        <field name="project_risk_degree" string="Degree of Risk Effect"/>
-                                    </td>
-                                    <td>
-                                        <field name="project_risk_strategy" string="Risk Response Strategy"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </group>
+                        <group string="External Risks"/>
+                        <field name="risk_external">
+                            <tree string="External Risks" editable="bottom">
+                                <field name="project_risk_area" string="Name or Area of Risk"/>
+                                <field name="project_risk_cause" string="Cause of Risk"/>
+                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                                <field name="project_risk_consequence" string="Consequences of Risk"/>
+                                <field name="project_risk_recommendation"
+                                       string="Recommendations for Actions to avoid/minimize risks"/>
+                            </tree>
+                        </field>
+                        <group string="Internal Risks"/>
+                        <field name="risk_internal">
+                            <tree string="Internal Risks" editable="bottom">
+                                <field name="project_risk_area" string="Name or Area of Risk"/>
+                                <field name="project_risk_cause" string="Cause of Risk"/>
+                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                                <field name="project_risk_consequence" string="Consequences of Risk"/>
+                                <field name="project_risk_recommendation"
+                                       string="Recommendations for Actions to avoid/minimize risks"/>
+                            </tree>
+                        </field>
                     </page>
                     <page name="page_project_ppi_kpi" string="Project PPI and KPI"
                           attrs="{'invisible': [('state','!=','project_charter')]}">
@@ -158,28 +170,17 @@
                             <field name="project_kpi" string="Project KPI"/>
                         </group>
                     </page>
+
+                    <!--Regular Communications-->
                     <page name="page_regular_communication" string="Regular Communications"
                           attrs="{'invisible': [('state','!=','project_charter')]}">
-                        <group>
-                            <table border="1" width="100%" height="200">
-                                <tr>
-                                    <th>Type of Communications</th>
-                                    <th>Periodicity</th>
-                                    <th>Pecipient</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <field name="project_type_communication" string="Type of Communications"/>
-                                    </td>
-                                    <td>
-                                        <field name="project_periodicity" string="Periodicity"/>
-                                    </td>
-                                    <td>
-                                        <field name="project_recipient" string="Pecipient"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </group>
+                        <field name="regular_communication">
+                            <tree string="Regular Communications" editable="bottom">
+                                <field name="project_type_communication" string="Type of Communications"/>
+                                <field name="project_periodicity" string="Periodicity"/>
+                                <field name="project_recipient" string="Pecipient"/>
+                            </tree>
+                        </field>
                     </page>
                     <page name="page_project_member" string="Project Members"
                           attrs="{'invisible': [('state','!=','project_charter')]}">
@@ -200,15 +201,6 @@
                                 <field name="project_internal_executor" string="Internal Executor"/>
                             </group>
                         </group>
-                    </page>
-
-                    <!--Test Risks Page-->
-                    <page string="TEST RISKS PAGE">
-                        <tree string="Operations" editable="bottom">
-                            <field name="name"/>
-                            <field name="project_founder"/>
-                            <field name='project_admin'/>
-                        </tree>
                     </page>
 
                     <!--Expert analysis recommendations-->
