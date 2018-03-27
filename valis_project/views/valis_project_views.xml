@@ -1,226 +1,240 @@
 <odoo>
-    <data>
-        <menuitem id="menu_project_risk" name="Risks" sequence="100"/>
-        <record id="edit_project" model="ir.ui.view">
-            <field name="name">valis.project</field>
-            <field name="model">project.project</field>
-            <field name="inherit_id" ref="project.edit_project"/>
-            <field name="arch" type="xml">
-                <!--Rename page 'settings' to 'main'-->
-                <xpath expr="//page[@name='settings']" position="attributes">
-                    <attribute name="string">Main</attribute>
-                </xpath>
+    <!--List view with numeration's menuitem-->
+    <menuitem id="project_valis_menu_item"
+              name="TEST-MENU-ITEM"
+              parent="project.menu_project_management"
+              action="action_all_customers"
+              sequence="25"/>
+    <act_window id="action_all_customers"
+                name="List view with numeration"
+                res_model="project.task"
+                view_mode="list"
+                limit="80"/>
+                <!--domain="[('task', '=', True)]"-->
+                <!--context="{'default_customer': True}"-->
 
-                <!--Hide page 'emails'-->
-                <xpath expr="//page[@name='emails']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">valis.project</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!--Rename page 'settings' to 'main'-->
+            <xpath expr="//page[@name='settings']" position="attributes">
+                <attribute name="string">Main</attribute>
+            </xpath>
 
-                <!--Hide field privacy_visibility-->
-                <xpath expr="//field[@name='privacy_visibility']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
+            <!--Hide page 'emails'-->
+            <xpath expr="//page[@name='emails']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
 
-                <!--Hide field user_id when state != project_charter-->
-                <xpath expr="//field[@name='user_id']" position="replace">
-                    <field name="user_id" string="Project Manager"
-                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                </xpath>
+            <!--Hide field privacy_visibility-->
+            <xpath expr="//field[@name='privacy_visibility']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
 
-                <!--Hide field partner_id when state != project_charter-->
-                <xpath expr="//field[@name='partner_id']" position="replace">
-                    <field name="partner_id" string="Customer"
-                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                </xpath>
+            <!--Hide field user_id when state != project_charter-->
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="user_id" string="Project Manager"
+                       attrs="{'invisible': [('state','!=','project_charter')]}"/>
+            </xpath>
 
-                <!--Statusbar!-->
-                <header>
-                    <!--State buttons-->
-                    <button string="Project Request" type="object" name="project_request_progressbar"
-                            class="oe_highlight"
-                            attrs="{'visible': [('state','=','project_request')]}"/>
-                    <button string="Expert Analysis" type="object" name="expert_analysis_progressbar"
-                            class="oe_highlight"
-                            attrs="{'visible': [('state','=','expert_analysis')]}"/>
-                    <button string="Project Charter" type="object" name="project_charter_progressbar"
-                            class="oe_highlight"
-                            attrs="{'visible': [('state','=','project_charter')]}"/>
+            <!--Hide field partner_id when state != project_charter-->
+            <xpath expr="//field[@name='partner_id']" position="replace">
+                <field name="partner_id" string="Customer"
+                       attrs="{'invisible': [('state','!=','project_charter')]}"/>
+            </xpath>
 
-                    <!--Protocol meeting button-->
-                    <!-- <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
-                            attrs="{'invisible': [('state','!=','expert_analysis')]}"/> -->
+            <!--Statusbar!-->
+            <header>
+                <!--State buttons-->
+                <button string="Project Request" type="object" name="project_request_progressbar"
+                        class="oe_highlight"
+                        attrs="{'visible': [('state','=','project_request')]}"/>
+                <button string="Expert Analysis" type="object" name="expert_analysis_progressbar"
+                        class="oe_highlight"
+                        attrs="{'visible': [('state','=','expert_analysis')]}"/>
+                <button string="Project Charter" type="object" name="project_charter_progressbar"
+                        class="oe_highlight"
+                        attrs="{'visible': [('state','=','project_charter')]}"/>
 
-                    <!--This will create the statusbar-->
-                    <field name="state" widget="statusbar"/>
-                </header>
+                <!--Protocol meeting button-->
+                <!-- <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
+                        attrs="{'invisible': [('state','!=','expert_analysis')]}"/> -->
 
-                <!--Action Risk Button-->
-                <xpath expr="//button[@name='toggle_active']" position="after">
-                    <button class="oe_stat_button" name="project_risk_button" type="object" icon="fa-exclamation">
-                        <field string="Risks" name="risk_count" widget="statinfo"/>
-                    </button>
-                </xpath>
+                <!--This will create the statusbar-->
+                <field name="state" widget="statusbar"/>
+            </header>
 
-                <!--Fields in settings(main)-->
-                <xpath expr="//field[@name='user_id']" position="before">
+            <!--Action Risk Button-->
+            <xpath expr="//button[@name='toggle_active']" position="after">
+                <button class="oe_stat_button" name="project_risk_button" type="object" icon="fa-exclamation">
+                    <field string="Risks" name="risk_count" widget="statinfo"/>
+                </button>
+            </xpath>
+
+            <!--Fields in settings(main)-->
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="name" string="Project Name"/>
+                <field name="id" string="Project Number"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="project_founder" string="Project Founder"/>
+                <field name="project_admin" string="Project Administrator"
+                       attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                <field name="project_type" string="Type of Project" widget="radio"/>
+                <field name="project_priority" widget="priority"
+                       attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                <field name="project_relation" string="Project Relations"/>
+                <field name="create_date" readonly="1"/>
+            </xpath>
+
+            <!--Main fields-->
+            <xpath expr="//field[@name='label_tasks']" position="after">
+                <group>
                     <field name="name" string="Project Name"/>
                     <field name="id" string="Project Number"/>
-                </xpath>
-                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="user_id" string="Project Manager"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                    <field name="partner_id" string="Customer"
+                           attrs="{'invisible': [('state','!=','project_charter')]}"/>
                     <field name="project_founder" string="Project Founder"/>
                     <field name="project_admin" string="Project Administrator"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                     <field name="project_type" string="Type of Project" widget="radio"/>
+
+                    <!--Show/hide field hello_world-->
+                    <!--<field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>-->
+
                     <field name="project_priority" widget="priority"
                            attrs="{'invisible': [('state','!=','project_charter')]}"/>
                     <field name="project_relation" string="Project Relations"/>
                     <field name="create_date" readonly="1"/>
-                </xpath>
+                </group>
+            </xpath>
 
-                <!--Main fields-->
-                <xpath expr="//field[@name='label_tasks']" position="after">
+            <!--Pages of the project-->
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="page_project_objective" string="Project Objectives">
                     <group>
-                        <field name="name" string="Project Name"/>
-                        <field name="id" string="Project Number"/>
-                        <field name="user_id" string="Project Manager"
-                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                        <field name="partner_id" string="Customer"
-                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                        <field name="project_founder" string="Project Founder"/>
-                        <field name="project_admin" string="Project Administrator"
-                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                        <field name="project_type" string="Type of Project" widget="radio"/>
-                        <!--<field name="hello_world" attrs="{'invisible': [('project_type','!=','2')]}"/>-->
-                        <field name="project_priority" widget="priority"
-                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                        <field name="project_relation" string="Project Relations"/>
-                        <field name="create_date" readonly="1"/>
+                        <field name="project_description" string="Project Description"/>
+                        <field name="project_strategic_objective" string="Project Strategic Objectives"/>
+                        <field name="project_functional_objective" string="Project Functional Objectives"/>
+                        <field name="project_objective" string="Project Objectives"/>
+                        <field name="project_result" string="Project Result"/>
                     </group>
-                </xpath>
+                </page>
+                <page name="page_project_constraint" string="Project Constraints">
+                    <group>
+                        <field name="key_assumption" string="Key Assumptions"/>
+                        <field name="project_constraint" string="Projects Constraints"/>
+                    </group>
+                </page>
+                <page name="page_project_stakeholder" string="Project Stakeholders">
+                    <group>
+                        <field name="project_thirdparty_organization" string="Third-party Organizations"/>
+                        <field name="project_external_name" string="Name of external project participant"/>
+                    </group>
+                </page>
+                <page name="page_project_budget" string="Project Budget">
+                    <group>
+                        <field name="project_income" string="Income from the Project"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_consumption" string="Consumption on the Project"/>
+                        <field name="project_credit" string="The Need for Credit"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_profit" string="Profit"
+                               attrs="{'invisible': [('state','!=','project_charter')]}"/>
+                        <field name="project_budget_comment" string="Comment"/>
+                    </group>
+                </page>
 
-                <!--Pages of the project-->
-                <xpath expr="//page[@name='settings']" position="after">
-                    <page name="page_project_objective" string="Project Objectives">
-                        <group>
-                            <field name="project_description" string="Project Description"/>
-                            <field name="project_strategic_objective" string="Project Strategic Objectives"/>
-                            <field name="project_functional_objective" string="Project Functional Objectives"/>
-                            <field name="project_objective" string="Project Objectives"/>
-                            <field name="project_result" string="Project Result"/>
-                        </group>
-                    </page>
-                    <page name="page_project_constraint" string="Project Constraints">
-                        <group>
-                            <field name="key_assumption" string="Key Assumptions"/>
-                            <field name="project_constraint" string="Projects Constraints"/>
-                        </group>
-                    </page>
-                    <page name="page_project_stakeholder" string="Project Stakeholders">
-                        <group>
-                            <field name="project_thirdparty_organization" string="Third-party Organizations"/>
-                            <field name="project_external_name" string="Name of external project participant"/>
-                        </group>
-                    </page>
-                    <page name="page_project_budget" string="Project Budget">
-                        <group>
-                            <field name="project_income" string="Income from the Project"
-                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                            <field name="project_consumption" string="Consumption on the Project"/>
-                            <field name="project_credit" string="The Need for Credit"
-                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                            <field name="project_profit" string="Profit"
-                                   attrs="{'invisible': [('state','!=','project_charter')]}"/>
-                            <field name="project_budget_comment" string="Comment"/>
-                        </group>
-                    </page>
+                <!--TEST RISK PAGE-->
+                <page name="page_project_risk" string="Project Risk">
+                    <group string="External Risks"/>
+                    <field name="risk_external">
+                        <tree string="External Risks" editable="bottom">
+                            <field name="project_risk_area" string="Name or Area of Risk"/>
+                            <field name="project_risk_cause" string="Cause of Risk"/>
+                            <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                            <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                            <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                            <field name="project_risk_consequence" string="Consequences of Risk"/>
+                            <field name="project_risk_recommendation"
+                                   string="Recommendations for Actions to avoid/minimize risks"/>
+                        </tree>
+                    </field>
+                    <group string="Internal Risks"/>
+                    <field name="risk_internal">
+                        <tree string="Internal Risks" editable="bottom">
+                            <field name="project_risk_area" string="Name or Area of Risk"/>
+                            <field name="project_risk_cause" string="Cause of Risk"/>
+                            <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
+                            <field name="project_risk_degree" string="Degree of Risk Effect"/>
+                            <field name="project_risk_strategy" string="Risk Response Strategy"/>
+                            <field name="project_risk_consequence" string="Consequences of Risk"/>
+                            <field name="project_risk_recommendation"
+                                   string="Recommendations for Actions to avoid/minimize risks"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="page_project_ppi_kpi" string="Project PPI and KPI"
+                      attrs="{'invisible': [('state','!=','project_charter')]}">
+                    <group>
+                        <field name="project_ppi" string="Project PPI"/>
+                        <field name="project_kpi" string="Project KPI"/>
+                    </group>
+                </page>
 
-                    <!--Test Risks Page-->
-                    <page name="page_project_risk" string="Project Risk">
-                        <group string="External Risks"/>
-                        <field name="risk_external">
-                            <tree string="External Risks" editable="bottom">
-                                <field name="project_risk_area" string="Name or Area of Risk"/>
-                                <field name="project_risk_cause" string="Cause of Risk"/>
-                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
-                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
-                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
-                                <field name="project_risk_consequence" string="Consequences of Risk"/>
-                                <field name="project_risk_recommendation"
-                                       string="Recommendations for Actions to avoid/minimize risks"/>
-                            </tree>
-                        </field>
-                        <group string="Internal Risks"/>
-                        <field name="risk_internal">
-                            <tree string="Internal Risks" editable="bottom">
-                                <field name="project_risk_area" string="Name or Area of Risk"/>
-                                <field name="project_risk_cause" string="Cause of Risk"/>
-                                <field name="project_risk_probability" string="Frequency or Probability of Risk"/>
-                                <field name="project_risk_degree" string="Degree of Risk Effect"/>
-                                <field name="project_risk_strategy" string="Risk Response Strategy"/>
-                                <field name="project_risk_consequence" string="Consequences of Risk"/>
-                                <field name="project_risk_recommendation"
-                                       string="Recommendations for Actions to avoid/minimize risks"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page name="page_project_ppi_kpi" string="Project PPI and KPI"
-                          attrs="{'invisible': [('state','!=','project_charter')]}">
-                        <group>
-                            <field name="project_ppi" string="Project PPI"/>
-                            <field name="project_kpi" string="Project KPI"/>
+                <!--Regular Communications-->
+                <page name="page_regular_communication" string="Regular Communications"
+                      attrs="{'invisible': [('state','!=','project_charter')]}">
+                    <field name="regular_communication">
+                        <tree string="Regular Communications" editable="bottom">
+                            <field name="project_type_communication" string="Type of Communications"/>
+                            <field name="project_periodicity" string="Periodicity"/>
+                            <field name="project_recipient" string="Pecipient"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="page_project_member" string="Project Members"
+                      attrs="{'invisible': [('state','!=','project_charter')]}">
+                    <group>
+                        <group string="Customer">
+                            <field name="partner_id" string="Customer"/>
+                            <field name="project_customer_sponsor" string="Project Sponsor"/>
+                            <field name="project_customer_curator" string="Project Curator"/>
+                            <field name="user_id" string="Project Manager"/>
+                            <field name="project_customer_executor" string="Customer Executor"/>
                         </group>
-                    </page>
-
-                    <!--Regular Communications-->
-                    <page name="page_regular_communication" string="Regular Communications"
-                          attrs="{'invisible': [('state','!=','project_charter')]}">
-                        <field name="regular_communication">
-                            <tree string="Regular Communications" editable="bottom">
-                                <field name="project_type_communication" string="Type of Communications"/>
-                                <field name="project_periodicity" string="Periodicity"/>
-                                <field name="project_recipient" string="Pecipient"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page name="page_project_member" string="Project Members"
-                          attrs="{'invisible': [('state','!=','project_charter')]}">
-                        <group>
-                            <group string="Customer">
-                                <field name="partner_id" string="Customer"/>
-                                <field name="project_customer_sponsor" string="Project Sponsor"/>
-                                <field name="project_customer_curator" string="Project Curator"/>
-                                <field name="user_id" string="Project Manager"/>
-                                <field name="project_customer_executor" string="Customer Executor"/>
-                            </group>
-                            <group string="Executor">
-                                <field name="project_executor" string="Executor"/>
-                                <field name="project_executor_sponsor" string="Project Sponsor"/>
-                                <field name="project_executor_curator" string="Project Curator"/>
-                                <field name="project_executor_manager" string="Project Manager"/>
-                                <field name="project_external_executor" string="External Executor"/>
-                                <field name="project_internal_executor" string="Internal Executor"/>
-                            </group>
+                        <group string="Executor">
+                            <field name="project_executor" string="Executor"/>
+                            <field name="project_executor_sponsor" string="Project Sponsor"/>
+                            <field name="project_executor_curator" string="Project Curator"/>
+                            <field name="project_executor_manager" string="Project Manager"/>
+                            <field name="project_external_executor" string="External Executor"/>
+                            <field name="project_internal_executor" string="Internal Executor"/>
                         </group>
-                    </page>
+                    </group>
+                </page>
 
-                    <!--Expert analysis recommendations-->
-                    <page name="page_project_recommendation" string="Project Recommendations"
-                          attrs="{'invisible': [('state','!=','expert_analysis')]}">
-                        <group>
-                            <field name="project_recommendation_result"
-                                   string="Conclusions/recommendations on the results of the project analysis"/>
-                            <field name="project_recommendation_manager"
-                                   string="Recommendations for choosing a project manager"/>
-                        </group>
-                    </page>
-                </xpath>
+                <!--Expert analysis recommendations-->
+                <page name="page_project_recommendation" string="Project Recommendations"
+                      attrs="{'invisible': [('state','!=','expert_analysis')]}">
+                    <group>
+                        <field name="project_recommendation_result"
+                               string="Conclusions/recommendations on the results of the project analysis"/>
+                        <field name="project_recommendation_manager"
+                               string="Recommendations for choosing a project manager"/>
+                    </group>
+                </page>
+            </xpath>
 
-                <!--Logs-->
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
-                </div>
-            </field>
-        </record>
-    </data>
+            <!--Logs-->
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </field>
+    </record>
 </odoo>
