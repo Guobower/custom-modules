@@ -15,9 +15,9 @@ class ValisProject(models.Model):
         pass
 
     # Test concatenation
-    @api.onchange('hello_world')
-    def change_project_name(self):
-        self.name = str(self.hello_world) + '. ' + self.name
+    # @api.onchange('hello_world')
+    # def change_project_name(self):
+    #     self.name = str(self.hello_world) + '. ' + self.name
 
     # Risks field
     # risk_all = fields.Many2many('valis.risk.internal', 'valis.risk', 'risk_list' 'risk_list_internal', 'Risk All', readonly=False, copy=True)
