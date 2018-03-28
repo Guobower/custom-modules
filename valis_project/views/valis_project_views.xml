@@ -1,17 +1,15 @@
 <odoo>
     <!--List view with numeration's menuitem-->
-    <menuitem id="project_valis_menu_item"
-              name="TEST-MENU-ITEM"
-              parent="project.menu_project_management"
-              action="action_all_customers"
-              sequence="25"/>
-    <act_window id="action_all_customers"
+    <act_window id="action_all_tasks"
                 name="List view with numeration"
                 res_model="project.task"
                 view_mode="list"
                 limit="80"/>
-                <!--domain="[('task', '=', True)]"-->
-                <!--context="{'default_customer': True}"-->
+    <menuitem id="project_valis_menuitem"
+              name="TEST-MENU-ITEM"
+              parent="project.menu_project_management"
+              action="action_all_tasks"
+              sequence="25"/>
 
     <record id="edit_project" model="ir.ui.view">
         <field name="name">valis.project</field>
