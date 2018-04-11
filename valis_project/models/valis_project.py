@@ -114,7 +114,7 @@ class ValisProject(models.Model):
         ('project_request', 'Project request'),
         ('expert_analysis', 'Expert analysis'),
         ('project_charter', 'Project charter'),
-    ], default='project_request')
+    ], default='project_request', track_visibility="onchange")
 
     # This function is triggered when the user clicks on the button 'Go to Project Request'
     @api.multi

@@ -46,7 +46,7 @@
             <!--Statusbar!-->
             <header>
                 <!--State buttons-->
-                <button string="Project Request" type="object" name="project_request_progressbar"
+                <!-- <button string="Project Request" type="object" name="project_request_progressbar"
                         class="oe_highlight"
                         attrs="{'visible': [('state','=','project_request')]}"/>
                 <button string="Expert Analysis" type="object" name="expert_analysis_progressbar"
@@ -54,14 +54,14 @@
                         attrs="{'visible': [('state','=','expert_analysis')]}"/>
                 <button string="Project Charter" type="object" name="project_charter_progressbar"
                         class="oe_highlight"
-                        attrs="{'visible': [('state','=','project_charter')]}"/>
+                        attrs="{'visible': [('state','=','project_charter')]}"/> -->
 
                 <!--Protocol meeting button-->
                 <!-- <button name="protocol_meeting" string="Protocol Meeting" type="object" class="oe_highlight"
                         attrs="{'invisible': [('state','!=','expert_analysis')]}"/> -->
 
                 <!--This will create the statusbar-->
-                <field name="state" widget="statusbar"/>
+                <field name="state" widget="statusbar" clickable="True"/>
             </header>
 
             <!--Action Risk Button-->
