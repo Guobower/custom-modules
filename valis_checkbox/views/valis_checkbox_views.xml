@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">valis.checklist</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='description_page']" position="after">
+                    <page string="Чекбокс">
+                        <field name="checkbox_list">
+                            <tree editable="bottom">
+                                <field name="check" string="✔" style="width: 30px"/>
+                                <field name="check_text" string="Сделать"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
